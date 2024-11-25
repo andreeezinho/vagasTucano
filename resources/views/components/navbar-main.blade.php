@@ -18,7 +18,7 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5 border-top">
                    @guest
                         <li class="nav-item mt-4 my-2"><a href="#" class="btn btn-light">Login</a></li>
-                        <li class="nav-item my-2"><a href="#" class="nav-link">Registre-se</a></li>   
+                        <li class="nav-item my-2"><a href="{{route('users.create')}}" class="nav-link">Registre-se</a></li>   
                    @endguest
                 </ul>
             </div>
@@ -27,7 +27,7 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     @guest
                         <li class="nav-item mx-2"><a href="#" class="btn btn-light">Login</a></li>
-                        <li class="nav-item mx-2"><a href="#" class="nav-link">Registre-se</a></li>  
+                        <li class="nav-item mx-2"><a href="{{route('users.create')}}" class="nav-link">Registre-se</a></li>  
                     @endguest
                 </ul>
             </div>

@@ -3,9 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+//importar controllers
+use App\Http\Controllers\Users\CreateController;
+
+//rota que só podem ser acessadas com autenticação
+Route::middleware('auth')->group(function(){
+
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/users/create', [CreateController::class, 'create'])->name('users.create');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
