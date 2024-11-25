@@ -1,0 +1,134 @@
+# arquivo de manifesto que configura serviços com docker #
+##########################################################
+
+services: 
+  #banco de dados
+    vagas_tucano_db:
+      #baixar a iamgem do mysql
+      image: mysql:5.7
+
+      #nome para o container
+      container_name: vagas_tucano_db
+
+      #declarar volume (diretório)
+      volumes:
+        - mysql:/var/lib/mysql
+      
+      #variáveis de ambiente (credenciais de banco de dados)
+      environment:
+        - MYSQL_DATABASE=data_base 
+        - MYSQL_USER=data_base
+        - MYSQL_PASSWORD=root
+        - MYSQL_ROOT_PASSWORD=Bombomgamer1!
+        - MYSQL_PORT = 3306
+
+      #declarar rede do docker (para comunicação do banco de dados, aplicação e servidor web)
+      networks:
+        laraDockerEnvNetwork:
+          #declarar ip para o container
+            ipv4_address: 10.0.0.2
+
+
+  #aplicação
+    vagas_tucano_app:
+      #nome do container
+      container_name: vagas_tucano_app
+
+      #declarar contexto para build
+      build: 
+        #define que é no diretório raiz do projeto
+        context: ./
+        #define qual é o arquivo dockerfile
+        dockerfile: Dockerfile
+
+      #declara a porta que vai ser usada (porta_local:porta_container)
+      ports:
+        - "8081:80"
+      
+      #declara volume para a aplicação
+      volumes:
+        #define diretório raiz
+        - .:/var/www
+      
+      #define onde vai ser o diretório de trabalho
+      working_dir: /var/www
+
+      #declara um arquivo .env que vai ser usado (para o Laravel)
+      env_file: .env
+
+      #declara variaveis de ambiente
+      environment:
+        #serviço de banco de dados
+        - "DB_HOST=vagas_tucano_db"
+        #porta do banco de dados
+        - "DB_PORT=3306"
+      
+      #links para conectar ao banco de dados
+      links:
+        - vagas_tucano_db
+      
+      #informa que depende do serviço de banco de dados
+      depends_on:
+        - vagas_tucano_db
+
+      #define a rede
+      networks:
+        laraDockerEnvNetwork:
+          ipv4_address: 10.0.0.3
+    
+
+  #servidor web nginx
+    vagas_tucano_nginx:
+      #nome do container
+      container_name: vagas_tucano_nginx
+      build:
+        #qual vai ser o diretório local
+        context: ./
+        #define o dockerfile que o nginx vai usar
+        dockerfile: nginx.Dockerfile
+      
+      #porta do nginx
+      ports: #(porta_local:porta_container)
+        - "8088:80"
+      
+      #linkar com serviço de aplicação
+      links:
+        - vagas_tucano_app
+
+      #declara volumes
+      volumes:
+        #define diretório raiz
+        - .:/var/www
+        #criar access.log espelhado
+        - ./nginx/access.log:/var/log/nginx/access.log
+        #criar error.log espelhado
+        - ./nginx/error.log:/var/log/nginx/error.log
+      
+      #declara a rede 
+      networks:
+        laraDockerEnvNetwork:
+          ipv4_address: 10.0.0.4
+
+
+#configuração da rede dessa container
+networks:
+  laraDockerEnvNetwork:
+    driver: bridge
+    ipam:
+      config:
+        #definindo subrede
+        - subnet: 10.0.0.0/16
+
+#declarando volumes (cria uma pasta local)
+volumes:
+  mysql:
+
+###########################################
+# para rodar o serviço docker em background
+#
+#docker compose up -d --build
+#
+#
+#
+# docker compose down
+###########################################
