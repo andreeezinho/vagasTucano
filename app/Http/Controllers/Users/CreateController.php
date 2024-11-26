@@ -11,4 +11,10 @@ class CreateController extends Controller
     public function create(){
         return view('users.create');
     }
+
+    //cadastrar o usuario no banco de dados
+    public function store(){
+
+        return redirect('/')->with('success', 'Cadastro feito com sucesso!');
+    }
 }

@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users/create', [CreateController::class, 'create'])->name('users.create');
+//cadastro de usuario
+Route::get('/create', [CreateController::class, 'create'])->name('users.create');
+//store de usuario (criar)
+Route::post('/create', [CreateController::class, 'store'])->name('users.store');
 
 
 Route::get('/dashboard', function () {
