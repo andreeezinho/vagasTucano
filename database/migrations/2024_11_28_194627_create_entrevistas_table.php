@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vagas', function (Blueprint $table) {
+        Schema::create('entrevistas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('empresa_id')->constrained();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->enum('status', ['Aberta', 'Fechada']);
-            $table->string('tipo');
-            $table->date('data_fechamento');
+            $table->foreignId('vaga_id')->constrained();
+            $table->enum('status', ['Pendente', 'Confirmado']);
+            $table->dateTime('data_agendada');
+            $table->string('local');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vagas');
+        Schema::dropIfExists('entrevistas');
     }
 };

@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vagas', function (Blueprint $table) {
+        Schema::create('vaga_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('empresa_id')->constrained();
-            $table->string('nome');
-            $table->text('descricao');
-            $table->enum('status', ['Aberta', 'Fechada']);
-            $table->string('tipo');
-            $table->date('data_fechamento');
+            $table->foreignId('vaga_id')->constrained();
+            $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vagas');
+        Schema::dropIfExists('vaga_user');
     }
 };

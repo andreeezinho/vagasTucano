@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Vaga extends Model
+class Entrevista extends Model
 {
     //
 }
