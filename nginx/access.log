@@ -796,3 +796,8 @@
 10.0.0.1 - - [28/Nov/2024:19:59:35 +0000] "GET /login HTTP/1.1" 200 5427 "http://localhost:8088/cadastro" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 10.0.0.1 - - [28/Nov/2024:19:59:39 +0000] "POST /login HTTP/1.1" 302 342 "http://localhost:8088/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 10.0.0.1 - - [28/Nov/2024:19:59:39 +0000] "GET / HTTP/1.1" 200 3427 "http://localhost:8088/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [28/Nov/2024:22:45:05 +0000] "GET / HTTP/1.1" 200 3977 "http://localhost:8088/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [28/Nov/2024:22:45:05 +0000] "GET /css/styles.css HTTP/1.1" 200 463 "http://localhost:8088/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [28/Nov/2024:22:45:07 +0000] "GET /login HTTP/1.1" 200 5427 "http://localhost:8088/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [28/Nov/2024:22:45:12 +0000] "POST /login HTTP/1.1" 302 342 "http://localhost:8088/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [28/Nov/2024:22:45:12 +0000] "GET / HTTP/1.1" 200 3427 "http://localhost:8088/login" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
