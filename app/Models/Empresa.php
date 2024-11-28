@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Empresa extends Model
 {
-    //
+    //define quais dados podem ser passados
+    protected $fillable = [
+        'user_id',
+        'nome',
+        'descricao',
+        'cnpj',
+        'endereco',
+        'telefone',
+        'icone',
+        'banner'
+    ];
 }

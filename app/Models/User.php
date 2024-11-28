@@ -48,4 +48,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //define que usuario pode participar de varias vagas
+    public function userVagas(){
+        return $this->belongsToMany('App\Models\Vaga');
+    }
+
+    //define que usuario pode participar de varias entrevistas
+    public function userEntrevista(){
+        return $this->belongsToMany('App\Models\Entrevista');
+    }
 }
