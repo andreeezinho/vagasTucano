@@ -15,7 +15,7 @@
                     <label for="icone" class="text-muted small d-flex flex-column text-center">
                         <div class="d-flex position-relative mx-auto">
                             <img src="/img/users/default.png" alt="Icone de usuario" id="preview" class="bg-secondary img-logo rounded-circle mx-auto">
-                            <span class="position-absolute bottom-0 end-0"><i class="bi-camera-fill rounded-circle bg-light editar-icone p-2"></i></span>
+                            <span class="position-absolute bottom-0 end-0"><i class="bi-camera-fill rounded-circle bg-light p-2"></i></span>
                         </div>
                         Insira uma foto de perfil
                     </label>

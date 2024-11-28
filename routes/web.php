@@ -16,9 +16,9 @@ Route::get('/', function () {
 })->name('home');
 
 //cadastro de usuario
-Route::get('/create', [CreateController::class, 'create'])->name('users.create');
+Route::get('/cadastro', [CreateController::class, 'create'])->name('users.create');
 //store de usuario (criar)
-Route::post('/create', [CreateController::class, 'store'])->name('users.store');
+Route::post('/cadastro', [CreateController::class, 'store'])->name('users.store');
 
 
 Route::get('/dashboard', function () {

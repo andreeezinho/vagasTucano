@@ -21,12 +21,12 @@
 
                 <div class="form-floating my-4">                       
                     <input type="password" name="password" id="password" class="form-control">
-                    <label for="password">Insira sua senha uma senha</label>
+                    <label for="password">Insira sua senha</label>
                 </div>
 
-                <div class="d-flex">
-                    <input type="checkbox" name="remember" id="remember" class="mx-2 mb-5">
-                    <label for="remember text-muted small">Continuar conectado</label>
+                <div class="d-flex mb-4">
+                    <input type="checkbox" name="remember" id="remember" class="mx-2">
+                    <label for="remember" class="text-muted small">Continuar conectado</label>
                 </div>
 
                 <button class="btn btn-dark mb-4">Confirmar</button>
