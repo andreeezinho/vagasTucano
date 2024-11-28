@@ -21,6 +21,10 @@
     width: 25px;
 }
 
+.editar-icone{
+    font-size: 90px;
+}
+
 @media(max-width: 992px){
     .menu-none{
         display: none;

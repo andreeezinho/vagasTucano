@@ -1,47 +1,39 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layout.main')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('title', 'Login - Vagas Tucano')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+
+
+
+    <div class="row justify-content-center">
+        <div class="card col-11 col-md-8 col-lg-6 py-2 text-center">
+            <img src="/img/logo.png" alt="Logo Vagas Tucano" class="img-logo mx-auto bg-dark rounded-circle my-3">
+            <h2 class="mt-4">Login</h2>
+
+            <form action="{{route('login')}}" method="POST">
+                @csrf
+
+                <div class="form-floating my-4">                       
+                    <input type="text" name="email" id="email" class="form-control">
+                    <label for="email">Insira seu email</label>
+                </div>
+
+                <div class="form-floating my-4">                       
+                    <input type="password" name="password" id="password" class="form-control">
+                    <label for="password">Insira sua senha uma senha</label>
+                </div>
+
+                <div class="d-flex">
+                    <input type="checkbox" name="remember" id="remember" class="mx-2 mb-5">
+                    <label for="remember text-muted small">Continuar conectado</label>
+                </div>
+
+                <button class="btn btn-dark mb-4">Confirmar</button>
+
+                <a href="{{route('users.create')}}" class="my-3 text-muted small d-block">Não possui conta? Crie aqui</a>
+            </form>
         </div>
+    </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+@endsection

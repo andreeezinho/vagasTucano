@@ -13,7 +13,7 @@ Route::middleware('auth')->group(function(){
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 //cadastro de usuario
 Route::get('/create', [CreateController::class, 'create'])->name('users.create');
