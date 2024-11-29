@@ -28,7 +28,7 @@ class CreateController extends Controller
             $icone = $request->icone;
 
             //criptografar o nome do arquivo
-            $iconeNome = md5($icone->getClientOriginalName().strtotime("now").".".$icone->getClientOriginalExtension());
+            $iconeNome = md5($icone->getClientOriginalName().strtotime("now")).".".$icone->getClientOriginalExtension();
 
             //definir destino do arquivo
             $destino = public_path('img/users');
@@ -41,7 +41,6 @@ class CreateController extends Controller
         }
 
         User::create($valida);
-
 
         return redirect('/login')->with('success', 'Cadastro feito com sucesso!');
     }

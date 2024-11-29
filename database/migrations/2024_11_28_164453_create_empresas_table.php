@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('nome');
             $table->string('descricao');
-            $table->string('cnpj');
+            $table->string('cnpj')->unique();
             $table->string('endereco');
             $table->string('telefone');
             $table->string('icone');
