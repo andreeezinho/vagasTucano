@@ -26,6 +26,41 @@ class StoreEmpresa extends FormRequest
     {
         return [
             //
+            'nome' => [
+                'required',
+                'string',
+                'min: 3',
+                'max: 100'
+            ],
+
+            'descricao' => [
+                'required',
+                'string'
+            ],
+
+            'cnpj' => [
+                'required',
+                'string',
+                'min:14',
+                //regra para validar se email é o mesmo quando usuario for editar
+                Rule::unique('empresas', 'cnpj')->ignore($this->id, 'id')
+            ],
+
+            'endereco' => [
+                'required',
+                'string',
+                'min: 3'
+            ],
+
+            'telefone' => [
+                'required',
+                'string',
+                'min:10'
+            ],
+
+            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+
+            'banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:100048'
         ];
     }
 }

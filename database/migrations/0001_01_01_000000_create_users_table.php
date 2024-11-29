@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('telefone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('socio')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

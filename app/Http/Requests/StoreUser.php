@@ -50,6 +50,7 @@ class StoreUser extends FormRequest
 
             'email' => [
                 'required',
+                'string',
                 //regra para validar se email é o mesmo quando usuario for editar
                 Rule::unique('users', 'email')->ignore($this->id, 'id')
             ],
@@ -58,6 +59,11 @@ class StoreUser extends FormRequest
                 'required',
                 'min: 8',
                 'max: 100'
+            ],
+
+            'socio' => [
+                'boolean',
+                'nullable'
             ]
         ];
     }

@@ -5,10 +5,15 @@ use Illuminate\Support\Facades\Route;
 
 //importar controllers
 use App\Http\Controllers\Users\CreateController;
+use App\Http\Controllers\Empresas\EmpresaController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //rota para a view de cadastrar a empresa
+    Route::get('/empresas/cadastro', [EmpresaController::class, 'create'])->name('empresas.create');
 
+    //rota para store da empresa
+    Route::post('/empresas', [EmpresaController::class, 'store'])->name('empresas.store');
 });
 
 Route::get('/', function () {

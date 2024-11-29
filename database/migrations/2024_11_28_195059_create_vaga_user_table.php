@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vaga_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->string('curriculo');
             $table->timestamps();
         });
     }
