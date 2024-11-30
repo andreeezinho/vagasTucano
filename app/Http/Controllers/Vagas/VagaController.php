@@ -53,4 +53,21 @@ class VagaController extends Controller
 
         return redirect()->route('empresas.dashboard', $id)->with('success', 'Vaga cadastrada com sucesso!');
     }
+
+    //classe para view de detalhes
+    public function detalhes($id){
+        $user = auth()->user();
+
+        //verificar se a vaga existe
+        if(!$vaga = Vaga::find($id)){
+            return redirect('/')->with('erro', 'Vaga não encontrada');
+        }
+
+        //verificar se vaga está aberta
+        if($vaga->status != "Aberta"){
+            return redirect('/')->with('erro', 'Esta vaga não está mais aberta');
+        }
+
+        return $vaga;
+    }
 }
