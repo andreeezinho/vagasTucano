@@ -9,6 +9,10 @@
     min-height: 90vh;
 }
 
+.container-footer{
+    min-height: min-content;
+}
+
 .img-logo{
     width: 80px;
 }

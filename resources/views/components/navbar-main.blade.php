@@ -17,8 +17,8 @@
 
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5 border-top">
                     @auth
-                        <li class="nav-item my-2"><a class="nav-link" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                        <li class="nav-item my-2"><a class="nav-link" href=""><i class="bi-person-video2"></i> Entrevistas</a></li>
+                        <li class="nav-item mt-2"><a class="nav-link" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
+                        <li class="nav-item mt-2"><a class="nav-link" href=""><i class="bi-person-video2"></i> Entrevistas</a></li>
                     @endauth
 
                    @guest
@@ -33,7 +33,6 @@
                     @auth
                     <li class="nav-item"><a href="##" class="nav-link">Vagas</a></li>
                     <li class="nav-item"><a href="##" class="nav-link">Empresas</a></li>
-                    <li class="nav-item"><a href="##" class="nav-link">Sobre nós</a></li>
                     <li class="nav-item">
                         <form action="" class="d-flex">
                             <input type="text" name="search" id="search" class="form-control bg-secondary mx-1" placeholder="Busque uma vaga">

@@ -6,9 +6,13 @@ use Illuminate\Support\Facades\Route;
 //importar controllers
 use App\Http\Controllers\Users\CreateController;
 use App\Http\Controllers\Empresas\EmpresaController;
+use App\Http\Controllers\Empresas\DashboardController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //rota para dashboard da empresa
+    Route::get('/empresas/{id}/dashboard', [DashboardController::class, 'dashboard'])->name('empresas.dashboard');
+
     //rota para a view de cadastrar a empresa
     Route::get('/empresas/cadastro', [EmpresaController::class, 'create'])->name('empresas.create');
 
