@@ -31,7 +31,8 @@ class StoreVaga extends FormRequest
 
             'descricao' => [
                 'required',
-                'string'
+                'string',
+                'min: 3'
             ],
 
             'status' => [
@@ -43,12 +44,6 @@ class StoreVaga extends FormRequest
                 'string',
                 'min: 2',
                 'max: 100'
-            ],
-
-            'telefone' => [
-                'required',
-                'string',
-                'min: 10'
             ],
 
             'data_fechamento' => [

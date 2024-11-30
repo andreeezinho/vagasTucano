@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Vagas;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 //importando request da vaga
-//use App\Http\Requests\
+use App\Http\Requests\StoreVaga;
 
 //importando model da vaga
 use App\Models\Vaga;
@@ -28,12 +28,15 @@ class VagaController extends Controller
             return redirect()->back()->with('erro', 'Você não possui acesso a essa empresa');
         }
 
-        return view('vagas.create');
+        return view('vagas.create', ['empresa' => $empresa->id]);
     }
 
     //cadastrar vaga
-    public function store($id){
+    public function store(StoreVaga $request, $id){
         $user = auth()->user();
+
+        //verificar dados
+        $valida = $request->validated();
 
         //verifica se empresa existe
         if(!$empresa = Empresa::find($id)){
@@ -44,8 +47,9 @@ class VagaController extends Controller
             return redirect()->back()->with('erro', 'Você não possui acesso a essa empresa');
         }
 
-        //verificar dados
-        
+        $valida['empresa_id'] = $id;
+
+        Vaga::create($valida);
 
         return redirect()->route('empresas.dashboard', $id)->with('success', 'Vaga cadastrada com sucesso!');
     }

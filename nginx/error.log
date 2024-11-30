@@ -1662,3 +1662,4 @@
 2024/11/30 11:43:14 [notice] 1#1: start worker process 30
 2024/11/30 11:43:14 [notice] 1#1: start worker process 31
 2024/11/30 11:43:14 [notice] 1#1: start worker process 32
+2024/11/30 12:26:02 [error] 31#31: *127 client intended to send too large body: 1368144 bytes, client: 10.0.0.1, server: , request: "POST /cadastro HTTP/1.1", host: "localhost:8088", referrer: "http://localhost:8088/cadastro"
