@@ -18,7 +18,7 @@ class Empresa extends Model
         'banner'
     ];
 
-    public function empresaPossuiVaga(){
+    public function vagas(){
         return $this->hasMany('App\Models\Vaga');
     }
 }

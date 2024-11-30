@@ -26,6 +26,9 @@ class DashboardController extends Controller
             return redirect()->back()->with('erro', 'Você não possui acesso a essa empresa');
         }
 
-        return view('empresas.dashboard', ['empresa' => $empresa]);
+        //passando todas as vagas da empresa
+        $vagas = $empresa->vagas;
+
+        return view('empresas.dashboard', ['empresa' => $empresa, 'vagas' => $vagas]);
     }
 }
