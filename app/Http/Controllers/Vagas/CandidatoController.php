@@ -21,12 +21,16 @@ class CandidatoController extends Controller
             return redirect('/')->with('erro', 'Vaga não encontrada');
         }
 
+        //traz arquivo do curriculo
+        $curriculo = $request->file('curriculo');
+
         //validar o as informações do arquivo do curriculo
-        $curriculo = $request->curriculo;
+        $request->validate([
+            'curriculo' => 'required|file|mimes:pdf|max:2048'
+        ]);
 
         //verificar se existe arquivo de pdf
         if($request->hasFile('curriculo') && $request->file('curriculo')->isValid()){
-
             //criptografar o nome do arquivo
             $curriculoNome = md5($curriculo->getClientOriginalName().strtotime("now")).".".$curriculo->getClientOriginalExtension();
 
@@ -34,12 +38,12 @@ class CandidatoController extends Controller
             $destino = public_path('vagas/curriculos');
 
             //mover arquivo para o diretorio (destino, nomeDoArquivo)
-            $curriculo->move($destino, $bannerNome);
+            $curriculo->move($destino, $curriculoNome);
 
             //candidatar usuario na vaga
             $user->userVagas()->attach($id, ['curriculo' => $curriculoNome]);   
         }else{
-            return redirect()->back()->with('erro', 'pdf nao validado');
+            return redirect()->back()->with('erro', 'O arquivo não foi validado');
         }
 
         return redirect()->back()->with('success', 'Você se candidatou a vaga com sucesso!');
@@ -53,9 +57,20 @@ class CandidatoController extends Controller
         if(!$vaga = Vaga::find($id)){
             return redirect('/')->with('erro', 'Vaga não encontrada');
         }
+
+        if($user){
+            //fazer um "select" do usuario na vaga
+            $userCurriculo = $user->userVagas()->wherePivot('vaga_id', $id)->first();
+        }
+
+        //pegar curriculo de usuario na vaga
+        $curriculo = $userCurriculo->pivot->curriculo;
         
-        //candidatar usuario na vagass
+        //desvincular usuario da vaga
         $user->userVagas()->detach($id);
+
+        //remover arquivo do curriculo do direorio
+        unlink(public_path('vagas/curriculos/'.$curriculo));
 
         return redirect()->back()->with('success', 'Você se desvinculou da vaga');
     }

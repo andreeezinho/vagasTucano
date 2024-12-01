@@ -14,7 +14,7 @@
                 <button type="submit">SAIR DA VAGA</button>
             </form>
         @else
-            <form action="{{route('vaga.candidatar', $vaga->id)}}" method="post">
+            <form action="{{route('vaga.candidatar', $vaga->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="curriculo" id="curriculo">
                 <button type="submit">CANDIDATAR</button>
