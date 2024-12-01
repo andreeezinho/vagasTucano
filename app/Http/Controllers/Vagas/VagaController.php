@@ -68,6 +68,22 @@ class VagaController extends Controller
             return redirect('/')->with('erro', 'Esta vaga não está mais aberta');
         }
 
-        return $vaga;
+        $participa = false;
+        $userNaVaga = $vaga->candidatos;
+
+        //verifica se usuario já está candidatado na vaga
+        if($user){
+            //passa os usuarios como array
+            $verifica = $userNaVaga->toArray();
+
+            foreach($verifica as $candidato){
+                //se usuario ja estiver na vaga
+                if($candidato['id'] == $id);
+
+                $participa = true;
+            }
+        }
+
+        return view('vagas.detalhes', ['vaga' => $vaga, 'participa' => $participa]);
     }
 }

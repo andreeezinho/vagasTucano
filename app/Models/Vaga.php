@@ -17,7 +17,7 @@ class Vaga extends Model
     ];
 
     //define que uma vaga pode ter varios usuarios
-    public function vaga(){
+    public function candidatos(){
         return $this->belongsToMany('App\Models\User');
     }
 
