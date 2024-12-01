@@ -7,9 +7,20 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\CreateController;
 use App\Http\Controllers\Empresas\EmpresaController;
 use App\Http\Controllers\Empresas\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Vagas\VagaController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //rota para ver detalhes da vaga
+    Route::get('vagas/{id}/detalhes', [VagaController::class, 'detalhes'])->name('vaga.detalhe');
+
+    //rota para cadastrar a vaga
+    Route::post('/empresas/{id}/vagas/cadastro', [VagaController::class, 'store'])->name('vaga.store');
+
+    //rota para a view de cadastro da vaga
+    Route::get('/empresas/{id}/vagas/cadastro', [VagaController::class, 'create'])->name('vaga.cadastro');
+
     //rota para dashboard da empresa
     Route::get('/empresas/{id}/dashboard', [DashboardController::class, 'dashboard'])->name('empresas.dashboard');
 
@@ -20,9 +31,7 @@ Route::middleware('auth')->group(function(){
     Route::post('/empresas', [EmpresaController::class, 'store'])->name('empresas.store');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 //cadastro de usuario
 Route::get('/cadastro', [CreateController::class, 'create'])->name('users.create');

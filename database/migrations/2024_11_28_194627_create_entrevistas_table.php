@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('entrevistas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('vaga_id')->constrained();
+            $table->foreignId('vaga_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['Pendente', 'Confirmado']);
             $table->dateTime('data_agendada');
             $table->string('local');

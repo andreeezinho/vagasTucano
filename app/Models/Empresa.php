@@ -17,4 +17,8 @@ class Empresa extends Model
         'icone',
         'banner'
     ];
+
+    public function vagas(){
+        return $this->hasMany('App\Models\Vaga');
+    }
 }

@@ -20,3 +20,7 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+nginx/access.log
+nginx/error.log
+nginx/*.log
+nginx/*.log
