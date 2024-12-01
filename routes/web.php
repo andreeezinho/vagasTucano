@@ -13,6 +13,9 @@ use App\Http\Controllers\Vagas\CandidatoController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //para para usuario a sair da vaga
+    Route::post('vagas/{id}/sair', [CandidatoController::class, 'sair'])->name('vaga.sair');
+    
     //para para usuario se candidatar a vaga
     Route::post('vagas/{id}/candidatar', [CandidatoController::class, 'candidatar'])->name('vaga.candidatar');
 

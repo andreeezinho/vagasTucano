@@ -18,7 +18,7 @@ class Vaga extends Model
 
     //define que uma vaga pode ter varios usuarios
     public function candidatos(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User')->withPivot('curriculo');
     }
 
     //define que uma vaga pertence a empresa

@@ -52,7 +52,7 @@ class User extends Authenticatable
 
     //define que usuario pode participar de varias vagas
     public function userVagas(){
-        return $this->belongsToMany('App\Models\Vaga');
+        return $this->belongsToMany('App\Models\Vaga')->withPivot('curriculo');;
     }
 
     //define que usuario pode participar de varias entrevistas
