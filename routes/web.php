@@ -7,17 +7,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users\CreateController;
 use App\Http\Controllers\Empresas\EmpresaController;
 use App\Http\Controllers\Empresas\DashboardController;
+use App\Http\Controllers\Empresas\EmpresaVagaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Vagas\VagaController;
 use App\Http\Controllers\Vagas\CandidatoController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //rota para view de ver candidatos nas vagas
+    Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos', [EmpresaVagaController::class, 'candidatos'])->name('vaga.candidatos');
+
     //para para usuario a sair da vaga
-    Route::post('vagas/{id}/sair', [CandidatoController::class, 'sair'])->name('vaga.sair');
+    Route::post('/vagas/{id}/sair', [CandidatoController::class, 'sair'])->name('vaga.sair');
     
     //para para usuario se candidatar a vaga
-    Route::post('vagas/{id}/candidatar', [CandidatoController::class, 'candidatar'])->name('vaga.candidatar');
+    Route::post('/vagas/{id}/candidatar', [CandidatoController::class, 'candidatar'])->name('vaga.candidatar');
 
     //rota para cadastrar a vaga
     Route::post('/empresas/{id}/vagas/cadastro', [VagaController::class, 'store'])->name('vaga.store');

@@ -28,6 +28,10 @@ class EmpresaController extends Controller
     public function store(StoreEmpresa $request){
         $user = auth()->user();
 
+        if($user->socio != true){
+            return redirect('/')->with('erro', 'Permissão necessária não encontrada');
+        }
+
         $valida = $request->validated();
 
         //verificar se existe imagem
