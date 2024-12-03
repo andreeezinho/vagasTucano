@@ -69,21 +69,21 @@ class VagaController extends Controller
         }
 
         $participa = false;
-        $userNaVaga = $vaga->candidatos;
 
         //verifica se usuario já está candidatado na vaga
         if($user){
-            //passa os usuarios como array
-            $verifica = $userNaVaga->toArray();
+            //pega do model User a funcao userVagas e transforma em array
+            $verifica = $user->userVagas->toArray();
 
+            //percorrer cada vaga que o usuario participa
             foreach($verifica as $candidato){
-                //se usuario ja estiver na vaga
-                if($candidato['id'] == $id);
-
-                $participa = true;
+                //se id da vaga for igual o id dessa vaga especifica
+                if($candidato['id'] == $id){
+                    $participa = true;
+                }
             }
         }
 
-        return view('vagas.detalhes', ['vaga' => $vaga, 'participa' => $participa]);
+        return view('vagas.detalhes', ['vaga' => $vaga, 'participa' => $participa]);;
     }
 }

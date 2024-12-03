@@ -39,6 +39,15 @@ class EmpresaVagaController extends Controller
             return redirect('/')->with('erro', 'Você não tem permissão para essa empresa');
         }
 
-        return $vaga->candidatos;
+        $candidatos = $vaga->candidatos;
+
+        return view('vagas.candidatos', ['id' => $id, 'id_vaga' => $id_vaga, 'candidatos' => $candidatos]);
+    }
+
+    //ver detalhes do candidato
+    public function candidatoDetalhes($id, $id_vaga, $id_candidato){
+
+        return $id . $id_vaga . $id_candidato;
+
     }
 }

@@ -14,6 +14,9 @@ use App\Http\Controllers\Vagas\CandidatoController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    //rota para ver datalhes dos candidatos
+    Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EmpresaVagaController::class, 'candidatoDetalhes'])->name('candidato.detalhes');
+
     //rota para view de ver candidatos nas vagas
     Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos', [EmpresaVagaController::class, 'candidatos'])->name('vaga.candidatos');
 
