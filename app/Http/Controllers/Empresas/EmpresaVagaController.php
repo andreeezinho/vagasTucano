@@ -12,11 +12,12 @@ use App\Http\Requests\StoreEmpresa;
 //importando models
 use App\Models\Vaga;
 use App\Models\Empresa;
+use App\Models\User;
 
 class EmpresaVagaController extends Controller
 {
-    //classe para mostrar view de candidatos da vaga
-    public function candidatos($id, $id_vaga){
+    //fazer verificacoes
+    private function verificacoes($id, $id_vaga){
         $user = auth()->user();
 
         //verifica se empresa existe
@@ -38,16 +39,42 @@ class EmpresaVagaController extends Controller
         if($empresa->user_id != $user->id){
             return redirect('/')->with('erro', 'Você não tem permissão para essa empresa');
         }
+    }
+
+    //classe para mostrar view de candidatos da vaga
+    public function candidatos($id, $id_vaga){
+        //chama funcao para verificacoes
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        $vaga = Vaga::find($id_vaga);
 
         $candidatos = $vaga->candidatos;
 
-        return view('vagas.candidatos', ['id' => $id, 'id_vaga' => $id_vaga, 'candidatos' => $candidatos]);
+        return view('empresas.candidatos', ['id' => $id, 'id_vaga' => $id_vaga, 'candidatos' => $candidatos]);
     }
 
     //ver detalhes do candidato
     public function candidatoDetalhes($id, $id_vaga, $id_candidato){
+        //chama funcao para verificacoes
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
 
-        return $id . $id_vaga . $id_candidato;
+        //verifica se encontra usuario
+        if(!$candidato = User::find($id_candidato)){
+            return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
 
+        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato]);
+
+    }
+
+    //aprovar candidato para entrevista
+    public function candidatoAprovar($id, $id_vaga, $id_candidato){
+        
     }
 }
