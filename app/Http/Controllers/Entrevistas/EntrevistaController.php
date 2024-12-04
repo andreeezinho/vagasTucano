@@ -15,8 +15,8 @@ use App\Models\Entrevista;
 
 class EntrevistaController extends Controller
 {
-    //classe para criar a entrevista e relacionar usuario:entrevista
-    public function store(StoreEntrevista $request, $id, $id_vaga, $id_candidato){
+    //classe de verificacoes
+    private function verificacoes($id, $id_vaga, $id_candidato){
         $user = auth()->user();
 
         //verifica se empresa existe
@@ -37,6 +37,15 @@ class EntrevistaController extends Controller
         //verifica se user é dono da empresa
         if($empresa->user_id != $user->id){
             return redirect('/')->with('erro', 'Você não tem permissão para essa empresa');
+        }
+    }
+
+    //classe para criar a entrevista e relacionar usuario:entrevista
+    public function store(StoreEntrevista $request, $id, $id_vaga, $id_candidato){
+        //verificações da empresa e usuario
+        $verificacoes = $this->verificacoes($id, $id_vaga, $id_candidato);
+        if($verificacoes){
+            return $verificacoes;
         }
 
         //verifica se candidato existe
