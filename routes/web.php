@@ -8,14 +8,18 @@ use App\Http\Controllers\Users\CreateController;
 use App\Http\Controllers\Empresas\EmpresaController;
 use App\Http\Controllers\Empresas\DashboardController;
 use App\Http\Controllers\Empresas\EmpresaVagaController;
+use App\Http\Controllers\Entrevistas\EntrevistaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Vagas\VagaController;
 use App\Http\Controllers\Vagas\CandidatoController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
-    //rota para passar usuario candidato para entrevista
-    Route::post('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EmpresaVagaController::class, 'candidatoAprovar'])->name('candidato.aprovar');
+    //rota para criar a entrevista
+    Route::post('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EntrevistaController::class, 'store'])->name('candidato.aprovar');
+
+    //rota para view de criar entrevista com o usuario
+    Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/entrevista', [EmpresaVagaController::class, 'candidatoEntrevista'])->name('candidato.entrevista');
 
     //rota para ver datalhes dos candidatos
     Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EmpresaVagaController::class, 'candidatoDetalhes'])->name('candidato.detalhes');

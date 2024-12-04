@@ -10,7 +10,8 @@ class Entrevista extends Model
     protected $fillable = [
         'vaga_id',
         'status',
-        'data_agendada',
+        'data',
+        'hora',
         'local'
     ];
 

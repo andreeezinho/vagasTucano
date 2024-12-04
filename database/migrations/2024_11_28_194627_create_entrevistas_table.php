@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('vaga_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['Pendente', 'Confirmado']);
-            $table->dateTime('data_agendada');
+            $table->date('data');
             $table->string('local');
             $table->timestamps();
         });

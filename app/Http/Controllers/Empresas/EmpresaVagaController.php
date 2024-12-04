@@ -74,7 +74,18 @@ class EmpresaVagaController extends Controller
     }
 
     //aprovar candidato para entrevista
-    public function candidatoAprovar($id, $id_vaga, $id_candidato){
-        
+    public function candidatoEntrevista($id, $id_vaga, $id_candidato){
+        //chama funcao para verificacoes
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        //verifica se encontra usuario
+        if(!$candidato = User::find($id_candidato)){
+            return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
+
+        return view('entrevistas.criar', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato]);
     }
 }
