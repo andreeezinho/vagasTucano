@@ -69,7 +69,24 @@ class EmpresaVagaController extends Controller
             return redirect('/')->with('erro', 'Candidato não encontrado');
         }
 
-        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato]);
+        $entrevistaMarcada = false;
+
+        //verifica se usuario ja tem entrevista marcada
+        if($candidato){
+
+            //transforma entrevistas do usuario em array
+            $candidatoEntrevista = $candidato->userEntrevista->toArray();
+
+            //percorrer todas as entrevista que o usuario tem
+            foreach($candidatoEntrevista as $entrevista){
+                //se vaga_id da entrevista do usuario for igual id_vaga
+                if($entrevista['vaga_id'] == $id_vaga){
+                    $entrevistaMarcada = true;
+                }
+            }
+        }
+
+        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato, 'entrevistaMarcada' => $entrevistaMarcada]);
 
     }
 
@@ -84,6 +101,21 @@ class EmpresaVagaController extends Controller
         //verifica se encontra usuario
         if(!$candidato = User::find($id_candidato)){
             return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
+
+        //verifica se usuario ja tem entrevista marcada
+        if($candidato){
+
+            //transforma entrevistas do usuario em array
+            $candidatoEntrevista = $candidato->userEntrevista->toArray();
+
+            //percorrer todas as entrevista que o usuario tem
+            foreach($candidatoEntrevista as $entrevista){
+                //se vaga_id da entrevista do usuario for igual id_vaga
+                if($entrevista['vaga_id'] == $id_vaga){
+                    return redirect()->back()->with('erro', 'Candidato já tem entrevista marcada');
+                }
+            }
         }
 
         return view('entrevistas.criar', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato]);
