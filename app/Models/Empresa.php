@@ -21,4 +21,9 @@ class Empresa extends Model
     public function vagas(){
         return $this->hasMany('App\Models\Vaga');
     }
+
+    //define que empresa pertece a um usuario
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

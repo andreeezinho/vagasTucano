@@ -64,6 +64,48 @@ class EntrevistaController extends Controller
         //atrelar usuario a entrevista
         $candidato->userEntrevista()->attach($entrevista->id);
 
-        return redirect()->back()->with('success', 'Entrevista marcada com sucesso');
+        return redirect()
+                ->route('candidato.detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'id_candidato' => $candidato->id])
+                ->with('success', 'Entrevista marcada com sucesso');
+    }
+
+    public function remover($id, $id_vaga, $id_candidato){
+        //verificações da empresa e usuario
+        $verificacoes = $this->verificacoes($id, $id_vaga, $id_candidato);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        //verifica se candidato existe
+        if(!$candidato = User::find($id_candidato)){
+            return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
+
+        $entrevista_id;
+
+        //identificar o id da entrevista
+        if($candidato){
+            $candidatoEntrevista = $candidato->userEntrevista->toArray();
+
+            //percorrer entrevistas do usuario
+            foreach($candidatoEntrevista as $entrevista){
+                if($entrevista['vaga_id'] == $id_vaga){
+                    $entrevista_id = $entrevista['id'];
+                }
+            }
+        }
+
+        $candidato->userEntrevista()->detach($entrevista_id);
+
+        return redirect()->back()->with('success', 'Entrevista removida');
+    }
+
+    //classe de mostrar entrevistas do usuario
+    public function show(){
+        $user = auth()->user();
+
+        $entrevistas = $user->userEntrevista;
+
+        return view('users.entrevistas-marcadas', ['entrevistas' => $entrevistas]);
     }
 }

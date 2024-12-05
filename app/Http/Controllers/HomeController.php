@@ -11,8 +11,15 @@ class HomeController extends Controller
 {
     //
     public function home(){
-        //busca todas as vagas aberta
-        $vagas = Vaga::where('status', 'Aberta')->get();
+        //request do input de procurar vagas
+        $search = request('search');
+
+        if($search){
+            //se procurar for setado (existir)
+            $vagas = Vaga::where('status', 'Aberta')->where('nome', 'like', '%'.$search.'%')->get();
+        }else{
+            $vagas = Vaga::where('status', 'Aberta')->get();
+        }
 
         return view('welcome', ["vagas" => $vagas]);
     }

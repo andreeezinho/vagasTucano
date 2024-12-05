@@ -59,4 +59,9 @@ class User extends Authenticatable
     public function userEntrevista(){
         return $this->belongsToMany('App\Models\Entrevista');
     }
+
+    //permite que usuario possua varia empresas
+    public function empresas(){
+        return $this->hasMany('App\Models\Entrevista');
+    }
 }

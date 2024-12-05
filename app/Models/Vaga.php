@@ -22,8 +22,8 @@ class Vaga extends Model
     }
 
     //define que uma vaga pertence a empresa
-    public function vagaPertenceEmpresa(){
-        return $this->belongsToMany('App\Models\User');
+    public function empresa(){
+        return $this->belongsTo('App\Models\Empresa');
     }
 
     //define que vaga possui varias entrevistas

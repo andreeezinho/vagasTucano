@@ -15,8 +15,13 @@ use App\Http\Controllers\Vagas\CandidatoController;
 
 //rota que só podem ser acessadas com autenticação
 Route::middleware('auth')->group(function(){
+    Route::get('/entrevistas', [EntrevistaController::class, 'show'])->name('users.entrevistas');
+
+    //rota para excluir entrevista do usuario
+    Route::delete('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/remover', [EntrevistaController::class, 'remover'])->name('candidato.entrevista.remover');
+
     //rota para criar a entrevista
-    Route::post('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EntrevistaController::class, 'store'])->name('candidato.aprovar');
+    Route::post('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/marcar', [EntrevistaController::class, 'store'])->name('candidato.aprovar');
 
     //rota para view de criar entrevista com o usuario
     Route::get('/empresas/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/entrevista', [EmpresaVagaController::class, 'candidatoEntrevista'])->name('candidato.entrevista');

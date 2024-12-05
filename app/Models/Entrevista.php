@@ -22,6 +22,6 @@ class Entrevista extends Model
 
     //define que entrevista pertence a vaga
     public function vaga(){
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsTo('App\Models\Vaga');
     } 
 }

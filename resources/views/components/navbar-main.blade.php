@@ -18,7 +18,7 @@
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 mt-5 border-top">
                     @auth
                         <li class="nav-item mt-2"><a class="nav-link" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                        <li class="nav-item mt-2"><a class="nav-link" href=""><i class="bi-person-video2"></i> Entrevistas</a></li>
+                        <li class="nav-item mt-2"><a class="nav-link" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Entrevistas</a></li>
                     @endauth
 
                    @guest
@@ -47,7 +47,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                            <li><a class="dropdown-item" href=""><i class="bi-person-video2"></i> Entrevistas</a></li>
+                            <li><a class="dropdown-item" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Entrevistas</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
