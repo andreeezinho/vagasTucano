@@ -4,10 +4,8 @@
 
 @section('content')
 
-
-
     <div class="row justify-content-center">
-        <div class="card col-11 col-md-8 col-lg-6 py-2 text-center">
+        <div class="col-11 col-md-8 col-lg-6 py-2 text-center">
             <img src="/img/logo.png" alt="Logo Vagas Tucano" class="img-logo mx-auto bg-dark rounded-circle my-3">
             <h2 class="mt-4">Login</h2>
 
