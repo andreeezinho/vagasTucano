@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('entrevistas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('vaga_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->enum('status', ['Pendente', 'Confirmado']);
             $table->date('data');
             $table->string('local');

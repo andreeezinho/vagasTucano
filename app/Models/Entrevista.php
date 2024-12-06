@@ -9,6 +9,7 @@ class Entrevista extends Model
     //definindo quais dados podem ser passados
     protected $fillable = [
         'vaga_id',
+        'user_id',
         'status',
         'data',
         'hora',
@@ -16,8 +17,8 @@ class Entrevista extends Model
     ];
 
     //define que uma entrevista tem varios usuarios
-    public function entrevista(){
-        return $this->belongsToMany('App\Models\User');
+    public function user(){
+        return $this->belongsTo('App\Models\User');
     }
 
     //define que entrevista pertence a vaga

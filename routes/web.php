@@ -27,7 +27,7 @@ Route::middleware('auth')->group(function(){
     Route::prefix('empresas')->group(function(){
 
         //rota para excluir entrevista do usuario
-        Route::delete('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/remover', [EntrevistaController::class, 'remover'])->name('candidato.entrevista.remover');
+        Route::delete('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/{id_entrevista}', [EntrevistaController::class, 'remover'])->name('candidato.entrevista.remover');
 
         //rota para criar a entrevista
         Route::post('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/marcar', [EntrevistaController::class, 'store'])->name('candidato.aprovar');
@@ -37,6 +37,9 @@ Route::middleware('auth')->group(function(){
 
         //rota para ver datalhes dos candidatos
         Route::get('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}', [EmpresaVagaController::class, 'candidatoDetalhes'])->name('candidato.detalhes');
+
+        //rota para ver entrevistas
+        Route::get('/{id}/vagas/{id_vaga}/entrevistas', [EntrevistaController::class, 'showEntrevistas'])->name('vaga.entrevistas');
 
         //rota para view de ver candidatos nas vagas
         Route::get('/{id}/vagas/{id_vaga}/candidatos', [EmpresaVagaController::class, 'candidatos'])->name('vaga.candidatos');

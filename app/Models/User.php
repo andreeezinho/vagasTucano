@@ -57,11 +57,11 @@ class User extends Authenticatable
 
     //define que usuario pode participar de varias entrevistas
     public function userEntrevista(){
-        return $this->belongsToMany('App\Models\Entrevista');
+        return $this->hasMany('App\Models\Entrevista');
     }
 
     //permite que usuario possua varia empresas
     public function empresas(){
-        return $this->hasMany('App\Models\Entrevista');
+        return $this->hasMany('App\Models\Empresa');
     }
 }

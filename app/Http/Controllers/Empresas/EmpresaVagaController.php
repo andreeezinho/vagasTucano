@@ -70,6 +70,7 @@ class EmpresaVagaController extends Controller
         }
 
         $entrevistaMarcada = false;
+        $id_entrevista = null;
 
         //verifica se usuario ja tem entrevista marcada
         if($candidato){
@@ -82,11 +83,12 @@ class EmpresaVagaController extends Controller
                 //se vaga_id da entrevista do usuario for igual id_vaga
                 if($entrevista['vaga_id'] == $id_vaga){
                     $entrevistaMarcada = true;
+                    $id_entrevista = $entrevista['id'];
                 }
             }
         }
 
-        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato, 'entrevistaMarcada' => $entrevistaMarcada]);
+        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato, 'entrevistaMarcada' => $entrevistaMarcada, 'id_entrevista' => $id_entrevista]);
 
     }
 

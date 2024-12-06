@@ -7,7 +7,7 @@
         <p>{{$candidato->name}}</p>
         <p>{{$candidato->cpf}}</p>
         @if ($entrevistaMarcada == true)
-            <form action="{{route('candidato.entrevista.remover', ['id' => $id, 'id_vaga' => $id_vaga, 'id_candidato' => $candidato->id])}}" method="post">
+            <form action="{{route('candidato.entrevista.remover', ['id' => $id, 'id_vaga' => $id_vaga, 'id_candidato' => $candidato->id, 'id_entrevista' => $id_entrevista])}}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit">Desmarcar entrevista</button>

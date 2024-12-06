@@ -34,7 +34,7 @@
                     <li class="nav-item"><a href="##" class="nav-link">Vagas</a></li>
                     <li class="nav-item"><a href="##" class="nav-link">Empresas</a></li>
                     <li class="nav-item">
-                        <form action="" class="d-flex">
+                        <form action="{{route('home')}}" metohd="get" class="d-flex">
                             <input type="text" name="search" id="search" class="form-control bg-secondary mx-1" placeholder="Busque uma vaga">
                             <button type="submit" class="btn btn-secondary mx-1"><i class="bi-search"></i></button>
                         </form>

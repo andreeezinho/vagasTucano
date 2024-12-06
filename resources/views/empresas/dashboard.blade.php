@@ -10,6 +10,7 @@
             <p>{{$vaga->descricao}}</p>
             <p>{{$vaga->tipo}}</p>
             <a href="{{route('vaga.candidatos', ['id' => $empresa->id, 'id_vaga' => $vaga->id])}}">Ver candidatos</a>
+            <a href="{{route('vaga.entrevistas', ['id' => $empresa->id, 'id_vaga' => $vaga->id])}}">Ver entrevistas</a>
         </div>
     @endforeach
 @endsection
