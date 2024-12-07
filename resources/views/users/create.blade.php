@@ -5,6 +5,8 @@
 @section('content')
  
     <form action="{{route('users.store')}}" method="POST" enctype="multipart/form-data" class="form-signin text-center">
+        @include('components.alert-success')
+        @include('components.alert-error')
         <h2 class="mt-4">Cadastro</h2>
         
         @csrf

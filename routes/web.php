@@ -44,6 +44,15 @@ Route::middleware('auth')->group(function(){
         //rota para view de ver candidatos nas vagas
         Route::get('/{id}/vagas/{id_vaga}/candidatos', [EmpresaVagaController::class, 'candidatos'])->name('vaga.candidatos');
 
+        //rota para excluir vaga
+        Route::delete('/{id}/vagas/{id_vaga}/delete', [VagaController::class, 'delete'])->name('vaga.delete');
+
+        //rota para atualizar a vaga
+        Route::put('/{id}/vagas/{id_vaga}/editar', [VagaController::class, 'update'])->name('vaga.update');
+
+        //rota para view de editar vaga
+        Route::get('/{id}/vagas/{id_vaga}/editar', [VagaController::class, 'editar'])->name('vaga.editar');
+
         //rota para cadastrar a vaga
         Route::post('/{id}/vagas/cadastro', [VagaController::class, 'store'])->name('vaga.store');
 

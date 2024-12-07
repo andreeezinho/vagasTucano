@@ -86,4 +86,48 @@ class VagaController extends Controller
 
         return view('vagas.detalhes', ['vaga' => $vaga, 'participa' => $participa]);;
     }
+
+    //---verificacoes
+    private function verificacoes($id, $id_vaga){
+        $user = auth()->user();
+
+        //verifica se empresa existe
+        if(!$empresa = Empresa::find($id)){
+            return redirect('/')->with('erro', 'Empresa não encontrada');
+        }
+
+        //verifica se vaga existe
+        if(!$vaga = Vaga::find($id_vaga)){
+            return redirect('/')->with('erro', 'Vaga não encontrada');
+        }
+
+        //verifica se é user é socio
+        if($user->socio != true){
+            return redirect('/')->with('erro', 'Permissão necessária não encontrada');
+        }
+
+        //verifica se user é dono da empresa
+        if($empresa->user_id != $user->id){
+            return redirect('/')->with('erro', 'Você não tem permissão para essa empresa');
+        }
+    }
+    //---------------
+
+
+    //classe para deletar vaga
+    public function delete($id, $id_vaga){
+        //fazendo verificacao de usuario, empresa e vaga
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        if(!$vaga = Vaga::find($id_vaga)){
+            return redirect()->back()->with('erro', 'Vaga não encontrada');
+        }
+
+        $vaga->delete();
+
+        return redirect()->back()->with('success', 'Vaga removida');
+    }
 }

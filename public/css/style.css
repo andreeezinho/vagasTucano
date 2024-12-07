@@ -6,7 +6,8 @@
 
 .container{
     min-height: 100vh;
-    position: relative
+    margin-top: 150px;
+    padding-bottom: 2em;
 }
 
 .content{

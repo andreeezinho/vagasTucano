@@ -4,6 +4,9 @@
 
 @section('content')
     <form action="{{route('login')}}" method="POST" class="form-signin text-center">
+        @include('components.alert-success')
+        @include('components.alert-error')
+        
         <img src="/img/logo.png" alt="Logo Vagas Tucano" class="img-logo mx-auto bg-dark rounded-circle my-3">
         <h2 class="mt-4">Login</h2>
         @csrf
