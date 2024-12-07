@@ -15,7 +15,7 @@
       @include('components.navbar-main')
     </header>
 
-    <section class="container">
+    <section class="content">
       @include('components.alert-success')
       @include('components.alert-error')
       @yield('content')
