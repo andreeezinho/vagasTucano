@@ -4,8 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-                        //extende de Store user
-class UpdateUser extends StoreUser
+class UpdateEmpresa extends StoreEmpresa
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -32,11 +31,11 @@ class UpdateUser extends StoreUser
                 'image|mimes:jpeg,png,jpg,gif,svg|max:10240'
             ],
 
-            $rules['password'] = [
+            //permite banner passar como nulo
+            $rules['banner'] = [
                 'nullable',
-                'min: 8',
-                'max: 100'
-            ]
+                'image|mimes:jpeg,png,jpg,gif,svg|max:10240'
+            ],
         ];
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Users\UpdateController;
 use App\Http\Controllers\Empresas\EmpresaController;
 use App\Http\Controllers\Empresas\DashboardController;
 use App\Http\Controllers\Empresas\EmpresaVagaController;
+use App\Http\Controllers\Empresas\UpdateEmpresaController;
 use App\Http\Controllers\Entrevistas\EntrevistaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Vagas\VagaController;
@@ -32,6 +33,9 @@ Route::middleware('auth')->group(function(){
 
     //rota para editar usuario
     Route::get('/editar', [UpdateController::class, 'edit'])->name('user.edit');
+
+    //rota para socio ver suas empresas
+    Route::get('/socio', [EmpresaController::class, 'empresas'])->name('user.empresas');
 
     //ROTAS PARA EMPRESA//
     Route::prefix('empresas')->group(function(){
@@ -71,6 +75,15 @@ Route::middleware('auth')->group(function(){
 
         //rota para dashboard da empresa
         Route::get('/{id}/dashboard', [DashboardController::class, 'dashboard'])->name('empresas.dashboard');
+
+        //rota para excluir empresa
+        Route::delete('/{id}/destroy', [UpdateEmpresaController::class, 'destroy'])->name('empresas.destroy');
+
+        //rota para atualizar empresa
+        Route::put('/{id}/update', [UpdateEmpresaController::class, 'update'])->name('empresas.update');
+
+        //rota para view de editar empresa
+        Route::get('/{id}/edit', [UpdateEmpresaController::class, 'edit'])->name('empresas.edit');
 
         //rota para a view de cadastrar a empresa
         Route::get('/cadastro', [EmpresaController::class, 'create'])->name('empresas.create');

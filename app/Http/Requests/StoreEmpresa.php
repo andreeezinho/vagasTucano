@@ -58,9 +58,9 @@ class StoreEmpresa extends FormRequest
                 'min:10'
             ],
 
-            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
 
-            'banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:100048'
+            'banner' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240'
         ];
     }
 }

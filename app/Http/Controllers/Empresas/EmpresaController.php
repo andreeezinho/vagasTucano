@@ -20,6 +20,18 @@ class EmpresaController extends Controller
         return view('empresas.show', compact('empresas'));
     }
 
+    //mostrar empresas do usuario
+    public function empresas(){
+        $user = auth()->user();
+
+        //verifica se usuario é sócio
+        if($user->socio != true){
+            return redirect('/')->with('erro','Permissão necessária não encontrada');
+        }
+
+        return view('empresas.empresas-socio', ['empresas' => $user->empresas]);
+    }
+
     //mostrar detalhes da empresa
     public function detalhes($id){
         if(!$empresa = Empresa::find($id)){

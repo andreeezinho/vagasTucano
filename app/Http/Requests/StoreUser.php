@@ -25,7 +25,7 @@ class StoreUser extends FormRequest
     public function rules(): array
     {
         return [
-            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'icone' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10240',
 
             'name' => [
                 'required',

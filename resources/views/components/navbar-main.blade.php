@@ -54,6 +54,14 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+
+                                @if(auth()->user()->socio == 1)
+                                    <li><a class="dropdown-item" href="{{route('user.empresas')}}"><i class="bi-person-video2"></i> Suas Empresas</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                @endif
+
                                 <li>
                                     <form action="/logout" method="POST">
                                         @csrf
