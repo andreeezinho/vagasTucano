@@ -3594,3 +3594,5 @@
 10.0.0.1 - - [09/Dec/2024:20:37:19 +0000] "GET /img/empresas/icones/2af7fd751cb6319a3589963701c02d6f.jpeg HTTP/1.1" 304 0 "http://localhost:8088/socio" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 10.0.0.1 - - [09/Dec/2024:20:37:23 +0000] "POST /empresas/1/destroy HTTP/1.1" 302 366 "http://localhost:8088/socio" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 10.0.0.1 - - [09/Dec/2024:20:37:23 +0000] "GET /socio HTTP/1.1" 200 6924 "http://localhost:8088/socio" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [09/Dec/2024:20:41:14 +0000] "GET /socio HTTP/1.1" 200 6706 "http://localhost:8088/socio" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+10.0.0.1 - - [09/Dec/2024:20:42:59 +0000] "GET /socio HTTP/1.1" 200 6706 "http://localhost:8088/socio" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
