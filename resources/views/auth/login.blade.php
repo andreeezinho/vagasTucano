@@ -26,7 +26,7 @@
             <label for="remember" class="text-muted small">Continuar conectado</label>
         </div>
 
-        <button class="btn btn-dark mb-4">Confirmar</button>
+        <button type="submit" class="btn btn-dark mb-4">Confirmar</button>
 
         <a href="{{route('users.create')}}" class="my-3 text-muted small d-block">Não possui conta? Crie aqui</a>
     </form>

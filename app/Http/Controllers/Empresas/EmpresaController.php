@@ -13,6 +13,22 @@ use App\Models\Empresa;
 
 class EmpresaController extends Controller
 {
+    //mostrar todas as empresas
+    public function show(){
+        $empresas = Empresa::all();
+
+        return view('empresas.show', compact('empresas'));
+    }
+
+    //mostrar detalhes da empresa
+    public function detalhes($id){
+        if(!$empresa = Empresa::find($id)){
+            return redirect('/')->with('Empresa não encontrada');
+        }
+
+        return view('empresas.detalhes', compact('empresa'));
+    }
+
     //classe para a view de logar empresa
     public function create(){
         $user = auth()->user();

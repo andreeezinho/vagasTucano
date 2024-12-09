@@ -73,7 +73,16 @@ Route::middleware('auth')->group(function(){
 });
 
 //rota para ver detalhes da vaga
-Route::get('vagas/{id}/detalhes', [VagaController::class, 'detalhes'])->name('vaga.detalhes');
+Route::get('/vagas/{id}/detalhes', [VagaController::class, 'detalhes'])->name('vaga.detalhes');
+
+//rota para ver todas as vagas
+Route::get('/vagas/all', [VagaController::class, 'show'])->name('vaga.show');
+
+//rota para ver todas as empresasss
+Route::get('/empresas/{id}', [EmpresaController::class, 'detalhes'])->name('empresas.detalhes');
+
+//rota para ver todas as empresasss
+Route::get('/empresas', [EmpresaController::class, 'show'])->name('empresas.show');
 
 //home
 Route::get('/', [HomeController::class, 'home'])->name('home');

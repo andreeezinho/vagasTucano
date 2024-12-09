@@ -30,35 +30,38 @@
 
             <div class="offcanvas-body menu-none">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item"><a href="{{route('vaga.show')}}" class="nav-link">Vagas</a></li>
+                    <li class="nav-item"><a href="{{route('empresas.show')}}" class="nav-link">Empresas</a></li>
+
                     @auth
-                    <li class="nav-item"><a href="##" class="nav-link">Vagas</a></li>
-                    <li class="nav-item"><a href="##" class="nav-link">Empresas</a></li>
-                    <li class="nav-item">
-                        <form action="{{route('home')}}" metohd="get" class="d-flex">
-                            <input type="text" name="search" id="search" class="form-control bg-secondary mx-1" placeholder="Busque uma vaga">
-                            <button type="submit" class="btn btn-secondary mx-1"><i class="bi-search"></i></button>
-                        </form>
-                    </li>
+                        <li class="nav-item">
+                            <form action="{{route('home')}}" metohd="get">
+                                <div class="input-group">
+                                    <input type="text" name="search" id="search" class="form-control bg-light" placeholder="Busque uma vaga">
+                                    <button type="submit" class="btn btn-light"><i class="bi-search"></i></button>
+                                </div>
+                            </form>
+                        </li>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" alt="icone" class="rounded-circle" width="25px">
-                        </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="/img/users/{{auth()->user()->icone ?? 'default.jpg'}}" alt="icone" class="rounded-circle" width="25px">
+                            </a>
 
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                            <li><a class="dropdown-item" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Entrevistas</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <form action="/logout" method="POST">
-                                    @csrf
-                                    <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); this.closest('form').submit();"><i class="bi-door-open-fill"></i> Sair</a>
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href=""><i class="bi-person-fill"></i> Meu Perfil</a></li>
+                                <li><a class="dropdown-item" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Entrevistas</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <form action="/logout" method="POST">
+                                        @csrf
+                                        <a class="dropdown-item" href="/logout" onclick="event.preventDefault(); this.closest('form').submit();"><i class="bi-door-open-fill"></i> Sair</a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
                     @endauth
 
                     @guest

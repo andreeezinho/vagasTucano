@@ -15,6 +15,13 @@ use App\Models\Empresa;
 
 class VagaController extends Controller
 {
+    //view para mostrar todas as vagas
+    public function show(){
+        $vagas = Vaga::all();
+
+        return view('vagas.show', ['vagas' => $vagas]);
+    }
+
     //classe para a view de cadastro de vaga
     public function create($id){
         $user = auth()->user();
