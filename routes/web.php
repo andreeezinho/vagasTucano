@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 //importar controllers
 use App\Http\Controllers\Users\CreateController;
+use App\Http\Controllers\Users\UpdateController;
 use App\Http\Controllers\Empresas\EmpresaController;
 use App\Http\Controllers\Empresas\DashboardController;
 use App\Http\Controllers\Empresas\EmpresaVagaController;
@@ -22,6 +23,15 @@ Route::middleware('auth')->group(function(){
     
     //para para usuario se candidatar a vaga
     Route::post('/vagas/{id}/candidatar', [CandidatoController::class, 'candidatar'])->name('vaga.candidatar');
+
+    //rota para deletar o usuario
+    Route::delete('/destroy', [UpdateController::class, 'destroy'])->name('user.destroy');
+
+    //rota para atualizar o usuario
+    Route::put('/update', [UpdateController::class, 'update'])->name('user.update');
+
+    //rota para editar usuario
+    Route::get('/editar', [UpdateController::class, 'edit'])->name('user.edit');
 
     //ROTAS PARA EMPRESA//
     Route::prefix('empresas')->group(function(){
@@ -69,7 +79,6 @@ Route::middleware('auth')->group(function(){
         Route::post('/', [EmpresaController::class, 'store'])->name('empresas.store');
 
     });
-
 });
 
 //rota para ver detalhes da vaga
