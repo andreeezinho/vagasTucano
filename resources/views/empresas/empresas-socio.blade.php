@@ -13,6 +13,8 @@
                 <a href="{{route('empresas.dashboard', ["id" => $empresa->id])}}" class="btn btn-primary">Entrar</a>
                 <a href="{{route('empresas.edit', ["id" => $empresa->id])}}" class="btn btn-success">Editar</a>
                 <form action="{{route('empresas.destroy', ['id' => $empresa->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
                     <button type="submit" class="btn btn-danger">Excluir</button>
                 </form>
             @endforeach

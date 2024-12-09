@@ -102,4 +102,28 @@ class UpdateEmpresaController extends Controller
         
         return redirect()->back()->with('success', 'Empresa atualizada!');
     }
+
+    //classe para excluir empresa
+    public function destroy($id){
+        $verifica = $this->verificacoes($id);
+        if($verifica){
+            return $verifica;
+        }
+
+        $empresa = Empresa::find($id);
+
+        if($empresa->icone != "default.png"){
+            //excluir imagem de perfil
+            unlink(public_path('img/empresas/icones/'.$empresa->icone));
+        }
+
+        if($empresa->banner){
+            //excluir imagem de perfil
+            unlink(public_path('img/empresas/banners/'.$empresa->banner));
+        }
+
+        $empresa->delete();
+
+        return redirect()->back()->with('success', 'Empresa deletada');
+    }
 }
