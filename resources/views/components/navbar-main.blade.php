@@ -56,6 +56,7 @@
                                 </li>
 
                                 @if(auth()->user()->socio == 1)
+                                    <li><a class="dropdown-item" href="{{route('empresas.create')}}"><i class="bi-building-add"></i> Criar empresa</a></li>
                                     <li><a class="dropdown-item" href="{{route('user.empresas')}}"><i class="bi-building"></i> Suas Empresas</a></li>
                                     <li>
                                         <hr class="dropdown-divider">

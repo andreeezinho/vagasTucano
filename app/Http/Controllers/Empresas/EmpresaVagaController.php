@@ -71,6 +71,7 @@ class EmpresaVagaController extends Controller
 
         $entrevistaMarcada = false;
         $id_entrevista = null;
+        $curriculo = null;
 
         //verifica se usuario ja tem entrevista marcada
         if($candidato){
@@ -88,7 +89,27 @@ class EmpresaVagaController extends Controller
             }
         }
 
-        return view('empresas.candidatos_detalhes', ['id' => $id, 'id_vaga' => $id_vaga, 'candidato' => $candidato, 'entrevistaMarcada' => $entrevistaMarcada, 'id_entrevista' => $id_entrevista]);
+        //transformar vagas do usuario em array
+        $candidatoVaga = $candidato->userVagas;
+
+        //percorre todas as vagas do usuario
+        foreach($candidatoVaga as $vaga){
+            //encontra a vaga
+            if($vaga['id'] == $id_vaga){
+                //pega curriculo do candidato
+                $curriculo = $vaga->pivot->curriculo;
+            }
+        }
+        
+        return view('empresas.candidatos_detalhes', 
+        [
+            'id' => $id, 
+            'id_vaga' => $id_vaga, 
+            'candidato' => $candidato, 
+            'entrevistaMarcada' => $entrevistaMarcada, 
+            'id_entrevista' => $id_entrevista,
+            'curriculo' => $curriculo
+        ]);
 
     }
 
