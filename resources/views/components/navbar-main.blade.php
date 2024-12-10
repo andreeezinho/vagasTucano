@@ -50,7 +50,8 @@
 
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="{{route('user.edit')}}"><i class="bi-person-fill"></i> Meu Perfil</a></li>
-                                <li><a class="dropdown-item" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Entrevistas</a></li>
+                                <li><a class="dropdown-item" href="{{route('users.vagas')}}"><i class="bi-suitcase-lg-fill"></i> Suas Vagas</a></li>
+                                <li><a class="dropdown-item" href="{{route('users.entrevistas')}}"><i class="bi-person-video2"></i> Suas Entrevistas</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

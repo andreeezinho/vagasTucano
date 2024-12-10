@@ -22,6 +22,15 @@ class VagaController extends Controller
         return view('vagas.show', ['vagas' => $vagas]);
     }
 
+    //view para mostrar vagas que o usuario participa
+    public function suasVagas(){
+        $user = auth()->user();
+
+        $vagas = $user->userVagas;
+
+        return view('users.vagas-candidatadas', compact('vagas'));
+    }
+
     //classe para a view de cadastro de vaga
     public function create($id){
         $user = auth()->user();
