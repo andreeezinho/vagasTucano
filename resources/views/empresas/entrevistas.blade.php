@@ -16,8 +16,13 @@
                                         ])}}" method="post">
                     @csrf
                     @method('delete')
-                    <button type="submit">Desmarcar entrevista</button>
+                    <button type="submit">Remover entrevista</button>
                 </form>
+                <a href="{{route('entrevista.edit', [
+                        'id' => $id, 'id_vaga' => $entrevista->vaga->id, 'id_candidato' => $entrevista->user->id, 'id_entrevista' => $entrevista->id
+                    ])}}" class="btn btn-primary">
+                    Editar
+                </a>
             </div>
         @endforeach
     @else

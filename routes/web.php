@@ -46,6 +46,12 @@ Route::middleware('auth')->group(function(){
         //rota para excluir entrevista do usuario
         Route::delete('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/{id_entrevista}', [EntrevistaController::class, 'remover'])->name('candidato.entrevista.remover');
 
+        //rota para atualizar entrevista
+        Route::put('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/{id_entrevista}/update', [EntrevistaController::class, 'update'])->name('entrevista.update');
+
+        //rota para view de editar entrevista
+        Route::get('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/{id_entrevista}/editar', [EntrevistaController::class, 'edit'])->name('entrevista.edit');
+
         //rota para criar a entrevista
         Route::post('/{id}/vagas/{id_vaga}/candidatos/{id_candidato}/marcar', [EntrevistaController::class, 'store'])->name('candidato.aprovar');
 

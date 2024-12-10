@@ -69,6 +69,53 @@ class EntrevistaController extends Controller
                 ->with('success', 'Entrevista marcada com sucesso');
     }
 
+    //classe para view de editar entrevista
+    public function edit($id, $id_vaga, $id_candidato, $id_entrevista){
+        //verificações da empresa e usuario
+        $verificacoes = $this->verificacoes($id, $id_vaga, $id_candidato);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        //verifica se entrevista existe
+        if(!$entrevista = Entrevista::find($id_entrevista)){
+            return redirect('/')->with('erro', 'Entrevista não encontrada');
+        }
+
+        //verifica se candidato existe
+        if(!$candidato = User::find($id_candidato)){
+            return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
+
+        return view('entrevistas.edit', compact('id', 'id_vaga','entrevista', 'candidato'));
+    }
+
+    //atualizar informações da entrevista
+    public function update(StoreEntrevista $request, $id, $id_vaga, $id_candidato, $id_entrevista){
+        //verificações da empresa e usuario
+        $verificacoes = $this->verificacoes($id, $id_vaga, $id_candidato);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        //verifica se entrevista existe
+        if(!$entrevista = Entrevista::find($id_entrevista)){
+            return redirect('/')->with('erro', 'Entrevista não encontrada');
+        }
+
+        //verifica se candidato existe
+        if(!$candidato = User::find($id_candidato)){
+            return redirect('/')->with('erro', 'Candidato não encontrado');
+        }
+
+        //validar form
+        $valida = $request->validated();
+
+        $entrevista->update($valida);
+
+        return redirect()->back()->with('success', 'Entrevista editada com sucesso');
+    }
+
     public function remover($id, $id_vaga, $id_candidato, $id_entrevista){
         //verificações da empresa e usuario
         $verificacoes = $this->verificacoes($id, $id_vaga, $id_candidato);
