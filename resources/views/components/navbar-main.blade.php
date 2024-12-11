@@ -76,7 +76,7 @@
 
                     @guest
                         <li class="nav-item mx-2"><a href="{{route('login')}}" class="btn btn-light">Login</a></li>
-                        <li class="nav-item mx-2"><a href="{{route('users.create')}}" class="nav-link">Registre-se</a></li>  
+                        <li class="nav-item"><a href="{{route('users.create')}}" class="nav-link">Registre-se</a></li>  
                     @endguest
                 </ul>
             </div>
