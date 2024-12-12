@@ -6,7 +6,7 @@
     <div class="border">
         <p>{{$vaga->nome}}</p>
         <p>{{$vaga->tipo}}</p>
-        <p>{{$vaga->descricao}}</p>
+        <p>{!! nl2br(e($vaga->descricao)) !!}</p>
         @if($participa == true)
             <p>JA PARTICIPA DA VAGA</p>
             <form action="{{route('vaga.sair', $vaga->id)}}" method="post">
