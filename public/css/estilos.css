@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+.desgraca{
+    width: 100%;
+    min-height: 40vh;
+}
+
 .container{
     min-height: 100vh;
     margin-top: 150px;
@@ -35,6 +40,17 @@
 
 .img-logo{
     width: 80px;
+}
+
+.img-empresas{
+    width: 120px;
+    min-height: 120px;
+    max-height: 120px;
+}
+
+.logo-home{
+    padding-top: 90px;
+    width: 200px;
 }
 
 .bg-tema{

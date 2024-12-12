@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-//importando model da empresa
+//importando model das vagas e empresa
 use App\Models\Vaga;
+use App\Models\Empresa;
 
 class HomeController extends Controller
 {
@@ -21,6 +22,9 @@ class HomeController extends Controller
             $vagas = Vaga::where('status', 'Aberta')->get();
         }
 
-        return view('welcome', ["vagas" => $vagas]);
+        //mostrar as 6 primeiras empresas
+        $empresas = Empresa::take(6)->get();
+
+        return view('welcome', compact('vagas', 'empresas'));
     }
 }
