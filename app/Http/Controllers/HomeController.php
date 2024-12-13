@@ -22,8 +22,8 @@ class HomeController extends Controller
             $vagas = Vaga::where('status', 'Aberta')->get();
         }
 
-        //mostrar as 6 primeiras empresas
-        $empresas = Empresa::take(6)->get();
+        //mostrar 6 empresas aleatorias
+        $empresas = Empresa::inRandomOrder()->limit(6)->get();
 
         return view('welcome', compact('vagas', 'empresas', 'search'));
     }
