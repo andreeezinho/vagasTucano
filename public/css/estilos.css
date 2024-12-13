@@ -4,9 +4,21 @@
     box-sizing: border-box;
 }
 
-.desgraca{
+.search{
     width: 100%;
     min-height: 40vh;
+}
+
+.banner-empresa{
+    margin-top: 106px;
+    height: 30vh;
+    width: 100%;
+    opacity: 0.2;
+}
+
+.icone-banner{
+    bottom: 0;
+    left: 10%;
 }
 
 .container{
@@ -72,6 +84,15 @@
 
     .content{
         margin-top: 70px;
+    }
+
+    .icone-banner{
+        left: 20px;
+    }
+
+    .icone-banner img{
+        width: 80px;
+        min-height: 80px;
     }
 }
 

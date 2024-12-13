@@ -4,7 +4,7 @@
 
 @section('content')
      
-    <div class="d-flex bg-dark text-light text-center p-4 desgraca">
+    <div class="d-flex bg-dark text-light text-center p-4 search">
         <div class="my-auto mx-auto">
             <img src="/img/logo.png" alt="Logo vagas tucano" class="logo-home">
             <p>Encontre suas vagas no nosso site!</p>
@@ -18,26 +18,30 @@
     </div>
 
     <div class="container mt-5">
-        <div class="row justify-content-center my-5">
-            <div class="col-12 text-center">
-                <h3>Conheça algumas empresas parceiras</h3>
+        @if ($search)
+            <h3>Resultado da pesquisa: {{$search}}</h3>
+        @else
+            <div class="row justify-content-center my-5">
+                <div class="col-12 text-center">
+                    <h3>Conheça algumas empresas parceiras</h3>
+                </div>
+                <div class="row">
+                    @foreach($empresas as $empresa)
+                        <div class="col-6 col-md-4 col-lg-2  text-center py-4">
+                            <img src="/img/empresas/icones/{{$empresa->icone}}" alt="Logo empresa" class="img-empresas rounded-circle">
+                            <h6 class="mt-3">{{$empresa->nome}}</h6>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="col-12 text-center p-3">
+                    <a href="{{route('empresas.show')}}" class="btn btn-warning"><i class="bi-building-fill"></i> Veja todas as empresas</a>
+                </div>
             </div>
-            <div class="row">
-                @foreach($empresas as $empresa)
-                    <div class="col-6 col-md-4 col-lg-2  text-center py-4">
-                        <img src="/img/empresas/icones/{{$empresa->icone}}" alt="Logo empresa" class="img-empresas rounded-circle">
-                        <h6 class="mt-3">{{$empresa->nome}}</h6>
-                    </div>
-                @endforeach
-            </div>
-            <div class="col-12 text-center p-3">
-                <a href="{{route('empresas.show')}}" class="btn btn-warning"><i class="bi-building-fill"></i> Veja todas as empresas</a>
-            </div>
-        </div>
+        @endif
 
         <div class="row justify-content-center my-5 pt-5">
             <h3 class="pb-2 border-bottom">
-                Encontre sua vaga
+                {{$search != null ? "" : "Encontre sua vaga" }}
                 <a href="" class="btn btn-warning float-end"> Veja todas as vagas</a>
             </h3>
 
@@ -46,7 +50,7 @@
                 @foreach ($vagas as $vaga)
                     <div class="col-12 my-4 border py-3">
                         <h4>
-                            <img src="img/empresas/icones/{{$vaga->empresa->icone}}" alt="Icone da empresa" class="img-logo">
+                            <img src="img/empresas/icones/{{$vaga->empresa->icone}}" alt="Icone da empresa" class="img-logo rounded-circle">
                             {{$vaga->nome}}
                         </h4>
 

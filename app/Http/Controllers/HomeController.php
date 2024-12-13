@@ -25,6 +25,6 @@ class HomeController extends Controller
         //mostrar as 6 primeiras empresas
         $empresas = Empresa::take(6)->get();
 
-        return view('welcome', compact('vagas', 'empresas'));
+        return view('welcome', compact('vagas', 'empresas', 'search'));
     }
 }
