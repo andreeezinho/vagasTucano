@@ -129,6 +129,42 @@ class VagaController extends Controller
     }
     //---------------
 
+    //classe para view de editar vaga
+    public function editar($id, $id_vaga){
+        //fazendo verificacao de usuario, empresa e vaga
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        if(!$vaga = Vaga::find($id_vaga)){
+            return redirect()->back()->with('erro', 'Vaga não encontrada');
+        }
+
+        return view('vagas.editar', compact('vaga'));
+    }
+
+    //classe para atualizar vaga
+    public function update(StoreVaga $request, $id, $id_vaga){
+        //fazendo verificacao de usuario, empresa e vaga
+        $verificacoes = $this->verificacoes($id, $id_vaga);
+        if($verificacoes){
+            return $verificacoes;
+        }
+
+        if(!$vaga = Vaga::find($id_vaga)){
+            return redirect()->back()->with('erro', 'Vaga não encontrada');
+        }
+
+        //validar dados
+        $valida = $request->validated();
+
+        //atualizar no banco de dados
+        $vaga->update($valida);
+
+        return redirect()->back()->with('success', 'Vaga atualizada com sucesso');
+    }
+
 
     //classe para deletar vaga
     public function delete($id, $id_vaga){

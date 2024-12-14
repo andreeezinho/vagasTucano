@@ -32,7 +32,7 @@ class StoreVaga extends FormRequest
             'descricao' => [
                 'required',
                 'string',
-                'min: 3'
+                'min: 3',
             ],
 
             'status' => [
