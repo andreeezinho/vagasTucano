@@ -7,13 +7,13 @@
     <div class="container"> 
         <div class="row justify-content-center">
             <div class="text-muted mb-3">
-                <img src="/img/empresas/icones/{{$vaga->empresa->icone}}" alt="Logo empresa" class="icone-user"> 
+                <img src="/img/empresas/icones/{{$vaga->empresa->icone}}" alt="Logo empresa" class="icone-user rounded-circle"> 
                 {{$vaga->empresa->nome}}
             </div>
 
             <h2 class="border-bottom pb-3">
                 {{$vaga->nome}}
-                <a href="" class="btn btn-warning float-end">Candidatar-se <i class="bi-box-arrow-up-right"></i></a>
+                <button class="btn btn-warning float-end" data-toggle="modal" data-target="#modal">Candidatar-se <i class="bi-box-arrow-up-right"></i></button>
             </h2>
 
             <div class="mt-3">
@@ -29,29 +29,38 @@
                 <h3 class="text-muted pb-2 pt-4">Descrição da vaga</h3>
 
                 <div class="px-4 py-3 border">
-                    <p class="text-muted">{{$vaga->descricao}}</p>
+                    <p class="text-muted">{!! nl2br(e($vaga->descricao)) !!}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- <div class="border">
-        <p>{{$vaga->nome}}</p>
-        <p>{{$vaga->tipo}}</p>
-        <p>{!! nl2br(e($vaga->descricao)) !!}</p>
-        @if($participa == true)
-            <p>JA PARTICIPA DA VAGA</p>
-            <form action="{{route('vaga.sair', $vaga->id)}}" method="post">
-                @csrf
-                <button type="submit">SAIR DA VAGA</button>
-            </form>
-        @else
-            <form action="{{route('vaga.candidatar', $vaga->id)}}" method="post" enctype="multipart/form-data">
-                @csrf
-                <input type="file" name="curriculo" id="curriculo">
-                <button type="submit">CANDIDATAR</button>
-            </form>
-        @endif
-    </div> --}}
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-tamanho">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle"><i class="bi-clipboard2-fill"></i> Insira seu currículo</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal"></button>
+                </div>
+
+                
+
+                <div class="modal-body d-flex">
+                    <iframe src="" class="border pdf" id="preview"></iframe>
+                </div>
+
+                <form action="{{route('vaga.candidatar', $vaga->id)}}" method="POST" class="modal-footer" enctype="multipart/form-data">
+                    @csrf
+        
+                    <div class="form-group">
+                        <label for="icone" class="btn btn-warning">Insira seu currículo</label>
+                        <input type="file" name="curriculo" id="icone" class="d-none">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Candidate-se</button>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 

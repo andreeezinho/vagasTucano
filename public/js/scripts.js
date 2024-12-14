@@ -7,4 +7,5 @@ function readImage() {
         file.readAsDataURL(this.files[0]);
     }
 }
+
 document.getElementById("icone").addEventListener("change", readImage, false);
