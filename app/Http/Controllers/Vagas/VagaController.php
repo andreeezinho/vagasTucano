@@ -44,7 +44,7 @@ class VagaController extends Controller
             return redirect()->back()->with('erro', 'Você não possui acesso a essa empresa');
         }
 
-        return view('vagas.create', ['empresa' => $empresa->id]);
+        return view('vagas.create', ['empresa' => $empresa]);
     }
 
     //cadastrar vaga

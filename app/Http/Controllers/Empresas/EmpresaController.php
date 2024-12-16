@@ -100,6 +100,6 @@ class EmpresaController extends Controller
 
         Empresa::create($valida);
 
-        return redirect('/')->with('success', 'Empresa criada com sucesso!');
+        return redirect()->route('user.empresas')->with('success', 'Empresa criada com sucesso!');
     }
 }
