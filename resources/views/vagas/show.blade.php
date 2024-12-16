@@ -15,7 +15,7 @@
             @if (count($vagas) > 0)
                 
                 @foreach ($vagas as $vaga)
-                    <div class="col-12 col-md-5 mx-auto my-4 border py-3">
+                    <div class="col-12 mx-auto my-4 border py-3">
                         <h4>
                             <img src="/img/empresas/icones/{{$vaga->empresa->icone}}" alt="Icone da empresa" class="img-logo rounded-circle">
                             {{$vaga->nome}}

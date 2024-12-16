@@ -50,18 +50,31 @@
                 <label for="password">Edite sua senha</label>
             </div>
     
-            <button class="btn btn-dark mb-4">Confirmar</button>
+            <button type="button" data-toggle="modal" data-target="#modal" class="btn btn-danger mb-4"><i class="bi-trash"></i> Excluir</button>
+            <button class="btn btn-dark mb-4"><i class="bi-pencil"></i> Editar</button>
         </form>
 
-        <div class="border border-danger mt-5 p-3">
-            <form action="{{route('user.destroy')}}" method="POST">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger">Deletar conta</button>
-            </form>
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Deseja excluir a conta?</h5>
+                    </div>
+
+                    <div class="modal-body"></div>
+
+                    <div class="modal-footer mx-auto">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+                        <form action="{{route('user.destroy')}}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger"><i class="bi-trash"></i> Excluir</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
     
-
 @endsection

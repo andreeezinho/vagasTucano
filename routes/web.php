@@ -115,23 +115,12 @@ Route::get('/empresas/{id}', [EmpresaController::class, 'detalhes'])->name('empr
 //rota para ver todas as empresasss
 Route::get('/empresas', [EmpresaController::class, 'show'])->name('empresas.show');
 
-//home
-Route::get('/', [HomeController::class, 'home'])->name('home');
-
 //cadastro de usuario
 Route::get('/cadastro', [CreateController::class, 'create'])->name('users.create');
 //store de usuario (criar)
 Route::post('/cadastro', [CreateController::class, 'store'])->name('users.store');
 
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+//home
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
 require __DIR__.'/auth.php';

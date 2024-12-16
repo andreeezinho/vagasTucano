@@ -13,7 +13,14 @@
 
             <h2 class="border-bottom pb-3">
                 {{$vaga->nome}}
-                <button class="btn btn-warning float-end" data-toggle="modal" data-target="#modal">Candidatar-se <i class="bi-box-arrow-up-right"></i></button>
+                @if($participa)
+                    <form action="{{route('vaga.sair', $vaga->id)}}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-secondary float-end"><i class="bi-box-arrow-left"></i> Sair da vaga</button>
+                    </form>
+                @else
+                    <button class="btn btn-warning float-end" data-toggle="modal" data-target="#modal">Candidatar-se <i class="bi-box-arrow-up-right"></i></button>
+                @endif
             </h2>
 
             <div class="mt-3">
