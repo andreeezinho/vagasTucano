@@ -23,7 +23,7 @@
                             <p class="text-muted my-2"><i class="bi-building"></i> Local: {{$entrevista->local}}</p>
                             <p class="text-muted my-2"><i class="bi-calendar-week"></i> Data: {{date('d/m/y', strtotime($entrevista->data))}}</p>
                             <p class="text-muted my-2"><i class="bi-clock"></i> Horário: {{date('h:m', strtotime($entrevista->hora))}}</p>
-                            <p class="text-muted my-2"><i class="bi-building"></i> Local: {{$entrevista->local}}</p>
+                            <p class="text-muted my-2"><i class="bi-{{$entrevista->status == "Confirmado" ? "check" : "exclamation-circle"}}"></i> Status: {{$entrevista->status}}</p>
                         </div>
                         
                         <p class="my-3 ms-3">Entrevista marcada em: {{date('d/m/y - h:m', strtotime($entrevista->created_at))}}</p>

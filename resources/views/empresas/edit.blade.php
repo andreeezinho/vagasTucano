@@ -50,7 +50,9 @@
             <label for="endereco">Insira o endereco da empresa</label>
         </div>
 
-        <textarea class="border text-muted small" name="descricao" id="descricao" cols="35" rows="10" placeholder="Insira uma descrição da empresa">{{$empresa->descricao}}</textarea>
+        <div class="form-group my-4">                     
+            <textarea name="descricao" class="form-control" rows="10" placeholder="Insira uma descrição da vaga"></textarea>
+        </div>
 
         <button class="btn btn-dark mb-4">Confirmar</button>
     </form>

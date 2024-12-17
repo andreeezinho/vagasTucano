@@ -53,7 +53,7 @@ class EmpresaVagaController extends Controller
 
         $candidatos = $vaga->candidatos;
 
-        return view('empresas.candidatos', ['id' => $id, 'id_vaga' => $id_vaga, 'candidatos' => $candidatos]);
+        return view('empresas.candidatos', ['id' => $id, 'vaga' => $vaga, 'candidatos' => $candidatos]);
     }
 
     //ver detalhes do candidato
@@ -104,7 +104,7 @@ class EmpresaVagaController extends Controller
         return view('empresas.candidatos_detalhes', 
         [
             'id' => $id, 
-            'id_vaga' => $id_vaga, 
+            'vaga' => $vaga, 
             'candidato' => $candidato, 
             'entrevistaMarcada' => $entrevistaMarcada, 
             'id_entrevista' => $id_entrevista,

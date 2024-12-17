@@ -158,6 +158,8 @@ class EntrevistaController extends Controller
 
         $entrevistas = Entrevista::where('vaga_id', $id_vaga)->get();
 
-        return view('empresas.entrevistas', ['id' => $id, 'entrevistas' => $entrevistas]);
+        $vaga = Vaga::find($id_vaga);
+
+        return view('empresas.entrevistas', ['id' => $id, 'entrevistas' => $entrevistas, 'vaga' => $vaga]);
     }
 }
