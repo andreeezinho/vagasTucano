@@ -23,10 +23,10 @@
                         <p class="text-muted my-3"><i class="bi-journal-medical"></i> Tipo da vaga: {{$vaga->tipo}}</p>
                         <p class="text-muted my-3"><i class="bi-{{$vaga->status == "Aberta" ? "check" : "exclamation-circle"}}"></i> Status: {{$vaga->status}}</p>
                         <p class="text-muted my-3"><i class="bi-clock"></i> Válida até: {{date('d/m/Y', strtotime($vaga->data_fechamento))}}</p>
-                        <a href="{{route('vaga.detalhes', $vaga->id)}}" class="btn btn-warning">Ver mais <i class="bi-box-arrow-in-up-right"></i></a>
                         <form action="{{route('vaga.sair', $vaga->id)}}" method="POST">
                             @csrf
-                        <button type="submit" class="btn btn-secondary my-2"><i class="bi-box-arrow-left"></i> Sair da vaga</button>
+                            <a href="{{route('vaga.detalhes', $vaga->id)}}" class="btn btn-warning">Ver mais <i class="bi-box-arrow-in-up-right"></i></a>
+                            <button type="submit" class="btn btn-secondary my-2"><i class="bi-box-arrow-left"></i> Sair da vaga</button>
                         </form>
                     </div>
                 @endforeach
