@@ -1,4 +1,4 @@
-<img src="/public/img/logo.png" class="150px" align="center">
+<img src="/public/img/logo.png" width="150px" align="center">
 
 # <h1 align="center">Vagas Tucano</h1>
 
