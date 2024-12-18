@@ -1,6 +1,7 @@
-<img src="/public/img/logo.png" width="150px" align="center">
 
-# <h1 align="center">Vagas Tucano</h1>
+
+# <h1 align="center"><img src="/public/img/logo.png" width="150px"> Vagas Tucano</h1>
+
 
 
 # <p align="center"> Instalar projeto utilizando Docker e Nginx </p>
