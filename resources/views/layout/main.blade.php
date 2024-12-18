@@ -22,8 +22,8 @@
     </section>
 
     <footer class="footer mt-auto py-3 bg-dark">
-        <div class="col-12 text-center py-3">
-          <span class="small text-light">&copy Vagas Tucano, todos os direitos reservados.</span>
+        <div class="col-12 col-md-8 mx-auto text-center py-3">
+          @include('components.footer')
         </div>
     </footer>
     

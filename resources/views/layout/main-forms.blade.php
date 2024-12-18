@@ -21,7 +21,7 @@
 
     <footer class="footer mt-auto py-3 bg-dark">
         <div class="col-12 text-center py-3">
-          <span class="small text-light">&copy Vagas Tucano, todos os direitos reservados.</span>
+          @include('components.footer')
         </div>
     </footer>
     
