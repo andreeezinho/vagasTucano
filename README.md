@@ -1,4 +1,4 @@
-<img src="/public/img/logo.png" width="60px">
+<img src="/public/img/logo.png">
 
 
 # <p align="center"> Instalar projeto utilizando Docker e Nginx </p>
