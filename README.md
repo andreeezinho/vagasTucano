@@ -68,28 +68,6 @@ composer -v
 php -v
 ```
 
-## Instalando projeto Laravel no container
-
-Se o composer estiver instalado corretamente, você já pode criar o seu projeto
-
-```
-composer create-project laravel/laravel nome-do-projeto
-```
-
-## Passando os arquivos para o diretório raiz
-
-Copie os arquivos dentro do seu projeto para o diretório raiz, o `www`
-
-```
-cp -r nome-do-projeto/* .
-```
-
-Em seguida, remova a pasta.
-
-```
-rm -rf nome-do-projeto
-```
-
 ## Verificando projeto
 
 Para garantir que nada está faltando para o Laravel funcionar, execute
